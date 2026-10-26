@@ -92,4 +92,17 @@ describe('Vistas migradas de EP1', () => {
     expect(screen.getByText(/1 ofertas en hualpén/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /ver ofertas de esta sede/i })).toHaveAttribute('href', '/carreras?sede=Hualp%C3%A9n');
   });
+
+  it('mantiene las dos alternativas del comparador dentro de la solicitud', async () => {
+    const user = userEvent.setup();
+    sesion('Estudiante');
+    localStorage.setItem('edubio360:comparadas', JSON.stringify(['of-001', 'of-002']));
+    mostrar('/comparar');
+    await user.click(screen.getByRole('link', { name: /solicitar orientación sobre esta comparación/i }));
+    expect(screen.getByText('Alternativas comparadas')).toBeInTheDocument();
+    await user.type(screen.getByLabelText(/motivo de consulta/i), 'Comparar los programas');
+    await user.type(screen.getByLabelText(/fecha preferida/i), '2099-12-30');
+    await user.click(screen.getByRole('button', { name: /enviar solicitud/i }));
+    expect(listarSolicitudes(localStorage)[0].ofertasComparadas).toHaveLength(2);
+  });
 });

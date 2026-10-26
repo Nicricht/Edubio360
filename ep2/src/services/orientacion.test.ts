@@ -61,4 +61,17 @@ describe('Orientación entre estudiante y orientador', () => {
     marcarNotificacionesLeidas(localStorage, estudiante.correo);
     expect(listarNotificaciones(localStorage, estudiante.correo).every((nota) => nota.leida)).toBe(true);
   });
+
+  it('conserva las ofertas comparadas al solicitar orientación', () => {
+    const ofertasComparadas = [
+      { id: 'of-001', carrera: 'Ingeniería en Informática', institucion: 'IP DUOC UC', comuna: 'Concepción' },
+      { id: 'of-002', carrera: 'Ingeniería en Informática', institucion: 'IP Santo Tomás', comuna: 'Concepción' },
+    ];
+    const creada = crearSolicitud(localStorage, estudiante, {
+      ofertaId: 'of-001', oferta: 'Ingeniería en Informática', motivo: 'Comparar alternativas',
+      fecha: fechaFutura, ofertasComparadas,
+    });
+    expect(creada.ofertasComparadas).toEqual(ofertasComparadas);
+    expect(listarSolicitudes(localStorage)[0].ofertasComparadas).toHaveLength(2);
+  });
 });

@@ -6,6 +6,12 @@ export interface CambioSolicitud {
   fecha: string;
   actor: string;
 }
+export interface OfertaComparada {
+  id: string;
+  carrera: string;
+  institucion: string;
+  comuna: string;
+}
 export interface Solicitud {
   id: string;
   estudiante: string;
@@ -19,6 +25,7 @@ export interface Solicitud {
   resultado: string;
   observacion: string;
   historial: CambioSolicitud[];
+  ofertasComparadas?: OfertaComparada[];
 }
 export interface Notificacion {
   id: string;
@@ -82,7 +89,7 @@ export function marcarNotificacionesLeidas(storage: Storage, correo: string): vo
   guardar(storage, notificacionesClave, todas.map((item) => item.correo === correo.toLowerCase() ? { ...item, leida: true } : item));
 }
 
-export function crearSolicitud(storage: Storage, sesion: Sesion, input: Pick<Solicitud, 'ofertaId' | 'oferta' | 'motivo' | 'fecha'>): Solicitud {
+export function crearSolicitud(storage: Storage, sesion: Sesion, input: Pick<Solicitud, 'ofertaId' | 'oferta' | 'motivo' | 'fecha'> & { ofertasComparadas?: OfertaComparada[] }): Solicitud {
   if (sesion.rol !== 'Estudiante' || !input.ofertaId || !input.oferta.trim() || !input.motivo.trim() || !fechaValida(input.fecha)) {
     throw new Error('Completa la oferta, el motivo y una fecha válida.');
   }
@@ -92,6 +99,7 @@ export function crearSolicitud(storage: Storage, sesion: Sesion, input: Pick<Sol
     ofertaId: input.ofertaId, oferta: input.oferta, motivo: input.motivo.trim(), fecha: input.fecha,
     estado: 'PENDIENTE', orientador: '', resultado: '', observacion: '',
     historial: [{ estado: 'PENDIENTE', fecha, actor: sesion.correo }],
+    ofertasComparadas: input.ofertasComparadas || [],
   };
   guardar(storage, solicitudesClave, [...listarSolicitudes(storage), creada]);
   notificar(storage, sesion.correo, 'Tu solicitud de orientación fue recibida.', creada.id);

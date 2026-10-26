@@ -6,17 +6,20 @@ import { DatosProvider } from '../context/DatosContext';
 import { Registro } from './Registro';
 import { AdminUsuarios } from './AdminUsuarios';
 import { AdminUsuarioForm } from './AdminUsuarioForm';
+import { SesionProvider } from '../context/SesionContext';
 
 const renderUsers = (route: string) =>
   render(
     <MemoryRouter initialEntries={[route]}>
       <DatosProvider>
+        <SesionProvider>
         <Routes>
           <Route path="/registro" element={<Registro />} />
           <Route path="/admin/usuarios" element={<AdminUsuarios />} />
           <Route path="/admin/usuarios/nuevo" element={<AdminUsuarioForm />} />
           <Route path="/admin/usuarios/:id/editar" element={<AdminUsuarioForm />} />
         </Routes>
+        </SesionProvider>
       </DatosProvider>
     </MemoryRouter>,
   );
@@ -54,5 +57,15 @@ describe('Registro y usuarios', () => {
     await user.selectOptions(screen.getByLabelText(/^rol$/i), 'Administrador');
     await user.click(screen.getByRole('button', { name: /guardar cambios/i }));
     expect(within(screen.getAllByTestId('admin-usuario-row')[0]).getByText('Administrador')).toBeInTheDocument();
+  });
+
+  it('permite desactivar y volver a activar un usuario', async () => {
+    const user = userEvent.setup();
+    renderUsers('/admin/usuarios');
+    const orientador = screen.getAllByTestId('admin-usuario-row')[1];
+    await user.click(within(orientador).getByRole('button', { name: /desactivar/i }));
+    expect(within(orientador).getByText('INACTIVO')).toBeInTheDocument();
+    await user.click(within(orientador).getByRole('button', { name: /activar/i }));
+    expect(within(orientador).getByText('ACTIVO')).toBeInTheDocument();
   });
 });

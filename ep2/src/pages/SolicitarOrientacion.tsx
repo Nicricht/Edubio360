@@ -14,7 +14,9 @@ export function SolicitarOrientacion() {
   const { ofertas, comparadasIds } = useDatos();
   const { sesion } = useSesion();
   const { enviar } = useOrientacion();
-  const [ofertaId, setOfertaId] = useState(parametros.get('oferta') || comparadasIds[0] || ofertas[0]?.id || '');
+  const idsComparacion = (parametros.get('comparacion') || '').split(',').filter(Boolean);
+  const comparadas = idsComparacion.map((id) => ofertas.find((oferta) => oferta.id === id)).filter((oferta): oferta is (typeof ofertas)[number] => !!oferta);
+  const [ofertaId, setOfertaId] = useState(parametros.get('oferta') || comparadas[0]?.id || comparadasIds[0] || ofertas[0]?.id || '');
   const [motivo, setMotivo] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState('');
@@ -28,7 +30,10 @@ export function SolicitarOrientacion() {
       return;
     }
     try {
-      enviar(sesion, { ofertaId, oferta: oferta.grupoComparacion || oferta.carrera, motivo, fecha });
+      enviar(sesion, {
+        ofertaId, oferta: oferta.grupoComparacion || oferta.carrera, motivo, fecha,
+        ofertasComparadas: comparadas.length >= 2 ? comparadas.map((item) => ({ id: item.id, carrera: item.carrera, institucion: item.institucion, comuna: item.comuna })) : [],
+      });
       setError('');
       setEnviada(true);
     } catch {
@@ -45,6 +50,10 @@ export function SolicitarOrientacion() {
       <p>Tu solicitud quedó pendiente de asignación y puedes consultar sus cambios.</p>
       <Link className="btn btn-dark" to="/estudiante/solicitudes">Ver mis solicitudes</Link>
     </div> : <form className="form-surface d-grid gap-3" noValidate onSubmit={enviarFormulario}>
+      {comparadas.length >= 2 && <div className="p-3 bg-light rounded">
+        <strong>Alternativas comparadas</strong>
+        <ul className="mb-0 mt-2">{comparadas.map((item) => <li key={item.id}>{item.carrera} · {item.institucion}</li>)}</ul>
+      </div>}
       <div><label className="form-label" htmlFor="ofertaSolicitud">Carrera e institución</label>
         <select id="ofertaSolicitud" className="form-select" value={ofertaId} onChange={(e) => setOfertaId(e.target.value)}>
           {ofertas.map((oferta) => <option key={oferta.id} value={oferta.id}>{oferta.carrera} · {oferta.institucion} · {oferta.comuna}</option>)}

@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { DatosProvider, useDatos } from './DatosContext';
@@ -77,5 +78,15 @@ describe('DatosProvider', () => {
     await user.click(screen.getByRole('button', { name: 'Agregar 0' }));
     await user.click(screen.getByRole('button', { name: 'Agregar 3' }));
     expect(screen.getByLabelText('cantidad comparación')).toHaveTextContent('1');
+  });
+
+  it('actualiza las ofertas cuando otra pestaña modifica el almacenamiento', () => {
+    render(<DatosProvider><Probe /></DatosProvider>);
+    expect(screen.getByLabelText('total ofertas')).toHaveTextContent('21');
+    act(() => {
+      localStorage.setItem('edubio360:ofertas', '[]');
+      window.dispatchEvent(new StorageEvent('storage', { key: 'edubio360:ofertas' }));
+    });
+    expect(screen.getByLabelText('total ofertas')).toHaveTextContent('0');
   });
 });

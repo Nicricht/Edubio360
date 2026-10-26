@@ -45,7 +45,7 @@ El reporte HTML se consulta en `ep2/coverage/index.html` después de ejecutar la
 | Usuarios | Registro, lista, cambio de rol, eliminación y cambios de comuna |
 | Repository | Operaciones CRUD, identificación de registros y persistencia local |
 | Sesiones | Ingreso por rol, rechazo de credenciales inválidas, cierre y cuentas inactivas |
-| Orientación | Solicitud pendiente, asignación, reprogramación, cancelación, resultado, historial y avisos |
+| Orientación | Solicitud pendiente, asignación, reprogramación, cancelación, resultado, ofertas comparadas, historial y avisos |
 | Rutas protegidas | Redirección de usuario sin sesión y restricción de perfil |
 | React Router | Inicio, vistas públicas, mapa, paneles y página inexistente |
 
@@ -56,11 +56,11 @@ El reporte HTML se consulta en `ep2/coverage/index.html` después de ejecutar la
 | Indicador | Resultado |
 |---|---:|
 | Archivos de pruebas | 15 |
-| Pruebas aprobadas | 72 de 72 |
-| Cobertura de líneas | 92,50 % |
-| Cobertura de sentencias | 92,50 % |
-| Cobertura de ramas | 82,34 % |
-| Cobertura de funciones | 82,80 % |
+| Pruebas aprobadas | 76 de 76 |
+| Cobertura de líneas | 92,25 % |
+| Cobertura de sentencias | 92,25 % |
+| Cobertura de ramas | 82,27 % |
+| Cobertura de funciones | 83,01 % |
 | Compilación TypeScript + Vite | Correcta |
 
 Los resultados se obtienen ejecutando `npm run test:coverage` en la versión correspondiente de la rama. El porcentaje mide qué partes del código fueron recorridas, pero no sustituye la revisión de las afirmaciones ni las pruebas de interfaz.

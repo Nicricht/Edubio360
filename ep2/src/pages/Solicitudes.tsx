@@ -31,6 +31,9 @@ function TarjetaSolicitud({ solicitud, rol, correo, cambiar }: {
     {solicitud.orientador && <p className="mb-1"><strong>Orientador:</strong> {solicitud.orientador}</p>}
     {solicitud.resultado && <p className="mb-1"><strong>Resultado:</strong> {solicitud.resultado}</p>}
     {solicitud.observacion && <p className="mb-1"><strong>Observaciones:</strong> {solicitud.observacion}</p>}
+    {(solicitud.ofertasComparadas?.length || 0) >= 2 && <details className="my-3"><summary>Alternativas comparadas</summary>
+      <ul>{solicitud.ofertasComparadas!.map((item) => <li key={item.id}>{item.carrera} · {item.institucion} · {item.comuna}</li>)}</ul>
+    </details>}
     <details className="my-3"><summary>Historial de cambios</summary>
       <ul>{solicitud.historial.map((cambio, indice) => <li key={`${cambio.fecha}-${indice}`}>{cambio.estado} · {new Date(cambio.fecha).toLocaleString('es-CL')} · {cambio.actor}</li>)}</ul>
     </details>

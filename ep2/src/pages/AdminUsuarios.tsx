@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Edit3, Plus, Trash2 } from 'lucide-react';
 import { useDatos } from '../context/DatosContext';
+import { useSesion } from '../context/SesionContext';
 
 export function AdminUsuarios() {
-  const { usuarios, removeUsuario } = useDatos();
+  const { usuarios, removeUsuario, updateUsuario } = useDatos();
+  const { sesion } = useSesion();
   const [pending, setPending] = useState<string | null>(null);
   const selected = usuarios.find((u) => u.id === pending);
   return (
@@ -56,6 +58,7 @@ export function AdminUsuarios() {
               <th>Usuario</th>
               <th>RUN</th>
               <th>Rol</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -72,8 +75,16 @@ export function AdminUsuarios() {
                 <td>
                   <span className="pill-soft">{u.rol}</span>
                 </td>
+                <td>{u.estado || 'ACTIVO'}</td>
                 <td>
                   <div className="table-actions">
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      disabled={u.correo === sesion?.correo}
+                      onClick={() => updateUsuario(u.id, { estado: u.estado === 'INACTIVO' ? 'ACTIVO' : 'INACTIVO' })}
+                    >
+                      {u.estado === 'INACTIVO' ? 'Activar' : 'Desactivar'}
+                    </button>
                     <Link
                       className="icon-action"
                       aria-label={`Editar usuario ${u.nombre}`}
@@ -84,6 +95,7 @@ export function AdminUsuarios() {
                     <button
                       className="icon-action icon-danger"
                       aria-label={`Eliminar usuario ${u.nombre}`}
+                      disabled={u.correo === sesion?.correo}
                       onClick={() => setPending(u.id)}
                     >
                       <Trash2 size={18} />

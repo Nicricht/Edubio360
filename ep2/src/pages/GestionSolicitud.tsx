@@ -27,6 +27,9 @@ export function GestionSolicitud() {
     <h1>Gestionar orientación</h1>
     <p><strong>Estudiante:</strong> {solicitud.estudiante} · {solicitud.correo}</p>
     <p><strong>Consulta:</strong> {solicitud.oferta} · {solicitud.motivo}</p>
+    {(solicitud.ofertasComparadas?.length || 0) >= 2 && <div className="form-surface mb-3"><h2 className="h5">Alternativas comparadas</h2>
+      <ul>{solicitud.ofertasComparadas!.map((item) => <li key={item.id}>{item.carrera} · {item.institucion} · {item.comuna}</li>)}</ul>
+    </div>}
     <form className="form-surface d-grid gap-3" onSubmit={guardar}>
       <div><label className="form-label" htmlFor="estadoGestion">Estado</label>
         <select id="estadoGestion" className="form-select" value={estado} disabled={finalizada} onChange={(e) => setEstado(e.target.value as EstadoSolicitud)}>

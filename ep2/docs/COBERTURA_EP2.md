@@ -7,12 +7,12 @@
 
 | Métrica | Cobertura |
 |---|---:|
-| Sentencias | 92,50 % |
-| Ramas | 82,34 % |
-| Funciones | 82,80 % |
-| Líneas | 92,50 % |
+| Sentencias | 92,25 % |
+| Ramas | 82,27 % |
+| Funciones | 83,01 % |
+| Líneas | 92,25 % |
 
-Se ejecutaron 72 pruebas distribuidas en 15 archivos, sin fallos en la ejecución registrada. Los módulos incluidos abarcan componentes, contexto, repositorios, servicios, páginas y validaciones. Se excluyen archivos de tests, configuración, dependencias, recursos públicos y el punto de montaje de la aplicación.
+Se ejecutaron 76 pruebas distribuidas en 15 archivos, sin fallos en la ejecución registrada. Los módulos incluidos abarcan componentes, contexto, repositorios, servicios, páginas y validaciones. Se excluyen archivos de tests, configuración, dependencias, recursos públicos y el punto de montaje de la aplicación.
 
 El reporte HTML detallado se genera en `coverage/index.html`. El archivo `coverage/coverage-summary.json` entrega las cantidades cubiertas y totales, por archivo y de forma global.
 

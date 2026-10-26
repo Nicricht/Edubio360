@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { Oferta, Usuario } from '../types';
 import { createOfertaRepository, createUsuarioRepository } from '../services/repositories';
 
@@ -37,6 +37,23 @@ export function DatosProvider({ children }: { children: ReactNode }) {
     }
   });
   const [compararError, setCompararError] = useState('');
+
+  useEffect(() => {
+    const sincronizar = (evento: StorageEvent) => {
+      if (evento.key === 'edubio360:ofertas' || evento.key === null) setOfertas(ofertaRepo.list());
+      if (evento.key === 'edubio360:usuarios' || evento.key === null) setUsuarios(usuarioRepo.list());
+      if (evento.key === 'edubio360:comparadas' || evento.key === null) {
+        try {
+          const guardadas: unknown = JSON.parse(localStorage.getItem('edubio360:comparadas') || '[]');
+          setComparadasIds(Array.isArray(guardadas) ? guardadas.filter((id): id is string => typeof id === 'string' && ofertaRepo.get(id) !== undefined).slice(0, 3) : []);
+        } catch {
+          setComparadasIds([]);
+        }
+      }
+    };
+    window.addEventListener('storage', sincronizar);
+    return () => window.removeEventListener('storage', sincronizar);
+  }, [ofertaRepo, usuarioRepo]);
 
   const saveCompared = (next: string[]) => {
     localStorage.setItem('edubio360:comparadas', JSON.stringify(next));

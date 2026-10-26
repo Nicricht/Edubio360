@@ -8,7 +8,7 @@ import {
 interface OrientacionValue {
   solicitudes: Solicitud[];
   notificaciones(correo: string): Notificacion[];
-  enviar(sesion: Sesion, datos: Pick<Solicitud, 'ofertaId' | 'oferta' | 'motivo' | 'fecha'>): Solicitud;
+  enviar(sesion: Sesion, datos: Pick<Solicitud, 'ofertaId' | 'oferta' | 'motivo' | 'fecha' | 'ofertasComparadas'>): Solicitud;
   cambiar(id: string, sesion: Sesion, accion: AccionSolicitud): Solicitud | null;
   leer(correo: string): void;
 }

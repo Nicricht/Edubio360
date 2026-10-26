@@ -44,7 +44,7 @@ export function Comparador() {
             {selected.length === 1 ? 'carrera seleccionada' : 'carreras seleccionadas'} · Datos
             históricos de 2021
           </p>
-          <Link className="btn btn-dark rounded-pill mb-4" to={`/solicitar?oferta=${selected[0].id}`}>
+          <Link className="btn btn-dark rounded-pill mb-4" to={selected.length > 1 ? `/solicitar?comparacion=${selected.map((item) => item.id).join(',')}` : `/solicitar?oferta=${selected[0].id}`}>
             Solicitar orientación sobre esta comparación
           </Link>
           <div className="compare-grid">

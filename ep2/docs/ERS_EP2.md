@@ -40,12 +40,12 @@ El catálogo inicial incorpora las 21 ofertas de la primera evaluación. Se pres
 | RF-06 | Registrar estudiantes | Validar RUN, correo, nombres, región, comuna y dirección mediante formulario controlado |
 | RF-07 | Iniciar y cerrar sesión | Validar las cuentas de demostración, mantener la sesión por pestaña y redirigir al panel del perfil |
 | RF-08 | Restringir vistas por rol | Enviar a ingreso si no existe sesión y redirigir al panel propio ante una ruta no autorizada |
-| RF-09 | Crear solicitudes de orientación | Registrar carrera, motivo y fecha no anterior al día actual; iniciar en estado pendiente |
+| RF-09 | Crear solicitudes de orientación | Registrar carrera, motivo y fecha no anterior al día actual; conservar las alternativas comparadas cuando corresponda; iniciar en estado pendiente |
 | RF-10 | Administrar solicitudes como estudiante | Mostrar solicitudes propias, solicitar reprogramaciones y cancelar solicitudes activas |
 | RF-11 | Gestionar solicitudes como orientador | Tomar solicitudes disponibles y registrar estado, fecha, observaciones y resultado de atención |
 | RF-12 | Conservar historial y avisos | Registrar cambios de estado y notificaciones consultables desde el panel del estudiante |
 | RF-13 | Mantener ofertas | Crear, listar, editar y eliminar ofertas, incluyendo cupos y umbral crítico |
-| RF-14 | Mantener usuarios | Crear, listar, editar y eliminar registros, con asignación de perfil estudiante, orientador o administrador |
+| RF-14 | Mantener usuarios | Crear, listar, editar y eliminar registros, asignar perfil estudiante, orientador o administrador y activar o desactivar cuentas |
 | RF-15 | Consultar contenidos institucionales | Presentar inicio, nosotros, novedades, artículos y contacto |
 
 ### 5. Requisitos no funcionales
