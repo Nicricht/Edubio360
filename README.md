@@ -10,6 +10,14 @@ HTML5, CSS, JavaScript, LocalStorage, SessionStorage, Leaflet y OpenStreetMap.
 
 Abrir la carpeta con Visual Studio Code y ejecutar `index.html` mediante Live Server.
 
+## Evaluación Parcial 2
+
+La migración a React, Vite y TypeScript se encuentra en [`ep2/`](ep2/README.md), dentro de la rama `ep2/react-vite-typescript`. Las páginas HTML, CSS y JavaScript de la primera evaluación permanecen en la raíz del repositorio.
+
+Para iniciar la EP2: `cd ep2`, `npm ci`, `npm run dev`.
+
+Para las pruebas: `npm run test:coverage`. La compilación de producción y la verificación de Docker se pueden revisar en GitHub Actions.
+
 ## Accesos de demostración
 
 - Estudiante: `estudiante@duoc.cl` / `1234`
