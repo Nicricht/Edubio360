@@ -81,9 +81,41 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** rutas verificadas, respuestas esperadas y resultados de las pruebas.
 
+
+### 9. Gestión de usuarios
+
+**Archivos:** `ep2/src/pages/AdminUsuarios.tsx`, `ep2/src/pages/AdminUsuarioForm.tsx`, `ep2/src/components/organisms/UsuarioForm.tsx`, `ep2/src/pages/Usuarios.test.tsx`.
+
+**Trabajo adicional:** revisar el listado de usuarios, creación y edición de registros, selección de roles, activación y desactivación, mensajes de confirmación y errores. Probar formularios vacíos, identificadores inexistentes y estados después de guardar; corregir los defectos verificables.
+
+**Evidencia:** escenarios ejecutados, resultado esperado/obtenido, capturas de la interfaz y pruebas relevantes.
+
+### 10. Formularios y validaciones
+
+**Archivos:** `ep2/src/pages/Registro.tsx`, `ep2/src/pages/Contacto.tsx`, `ep2/src/utils/validations.ts`, `ep2/src/pages/Formularios.test.tsx`, `ep2/src/utils/validations.test.ts`.
+
+**Trabajo adicional:** comprobar RUN válido e inválido, formato del correo, contraseñas, campos obligatorios, selección dependiente de región y comuna, mensajes de error y corrección de entradas. Ampliar los casos negativos y los de recuperación después de errores, con resultados explícitos.
+
+**Evidencia:** matriz breve de entradas válidas e inválidas, reporte de pruebas y capturas de mensajes cuando proceda.
+
+### 11. Mapa y comparador
+
+**Archivos:** `ep2/src/pages/MapaSedes.tsx`, `ep2/src/pages/Comparador.tsx`, `ep2/src/pages/Comparador.test.tsx`; coordinar cambios que afecten a `ep2/src/context/DatosContext.tsx` con Nicolás.
+
+**Trabajo adicional:** comprobar ubicaciones y acceso desde el mapa, selección y retiro de ofertas, visualización comparativa y estados sin elementos. Evaluar navegación, mensajes y diseño en móvil; agregar pruebas para los casos no cubiertos.
+
+**Evidencia:** lista de escenarios de mapa/comparación, capturas de la vista y resultados de las pruebas.
+
+## Distribución del trabajo después de ampliar el encargo
+
+- **Ritwornz — once áreas asignadas para revisión y posibles mejoras:** páginas públicas, componentes reutilizables, catálogo, responsividad, pruebas de interfaz, documentación de evidencias, accesibilidad, rutas y estados, gestión de usuarios, formularios y validaciones, mapa y comparador.
+- **Nicolás — coordinación e integración:** arquitectura transversal, repositorios de ofertas y persistencia simulada, orientación, manejo de sesiones y permisos compartidos, integración de módulos, Docker e integración continua, y revisión de calidad antes de fusionar.
+- **Coordinación:** cualquier modificación compartida en contexto global, rutas o reglas de negocio se acuerda antes de integrar para evitar conflictos. La asignación de tareas no cambia la autoría del código existente.
+
+
 ## Integración
 
-Trabajar en las ocho áreas desde `ritwornz/proyecto-completo`, sin repetir cambios artificialmente. Abrir un Pull Request por conjunto de cambios reales. Antes de integrar, ejecutar las pruebas y la compilación. Nicolás revisa la integración a EP2 y ambos deben comprender el proyecto completo para la presentación individual.
+Trabajar en las once áreas desde `ritwornz/proyecto-completo`, sin repetir cambios artificialmente. Abrir un Pull Request por conjunto de cambios reales. Antes de integrar, ejecutar las pruebas y la compilación. Nicolás revisa la integración a EP2 y ambos deben comprender el proyecto completo para la presentación individual.
 
 ## Entrega y atribución
 
