@@ -7,6 +7,7 @@
 **Proyecto:** EduBío 360
 
 **Versión:** EP2 · React, Vite y TypeScript
+
 **Fecha:** 26 de octubre de 2026
 
 ### 1. Propósito

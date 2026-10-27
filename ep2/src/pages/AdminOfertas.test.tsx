@@ -41,6 +41,13 @@ describe('Administración de ofertas (CRUD visual)', () => {
     expect(screen.getAllByRole('alert').length).toBeGreaterThan(1);
   });
 
+  it('organiza el formulario con columnas responsivas de Bootstrap', () => {
+    show('/admin/ofertas/nueva');
+    expect(screen.getByLabelText(/^carrera$/i).closest('.col-md-6')).toBeInTheDocument();
+    expect(screen.getByLabelText(/^modalidad$/i).closest('.col-md-4')).toBeInTheDocument();
+    expect(screen.getByLabelText(/^descripción$/i).closest('.col-12')).toBeInTheDocument();
+  });
+
   it('crea una oferta desde el formulario y actualiza el listado', async () => {
     const user = userEvent.setup();
     show('/admin/ofertas/nueva');

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createOfertaRepository, createUsuarioRepository } from './repositories';
 import type { Oferta, Usuario } from '../types';
 
@@ -74,6 +74,17 @@ describe('OfertaRepository', () => {
   it('persiste cambios entre nuevas instancias', () => {
     createOfertaRepository(localStorage).create(oferta);
     expect(createOfertaRepository(localStorage).get('prueba-1')?.carrera).toBe(oferta.carrera);
+  });
+
+  it('guarda las ofertas con la clave correcta del almacenamiento', () => {
+    const escritura = vi.spyOn(Storage.prototype, 'setItem');
+    try {
+      createOfertaRepository(localStorage).create(oferta);
+      expect(escritura).toHaveBeenCalledWith('edubio360:ofertas', expect.any(String));
+      expect(JSON.parse(localStorage.getItem('edubio360:ofertas') || '[]')).toContainEqual(oferta);
+    } finally {
+      escritura.mockRestore();
+    }
   });
 
   it('recupera datos iniciales si el almacenamiento contiene JSON inválido', () => {
