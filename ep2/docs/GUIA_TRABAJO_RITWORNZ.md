@@ -2,22 +2,22 @@
 
 ## Punto de partida
 
-La base es la rama `ep2/react-vite-typescript`, commit `9ac6f8e`. El proyecto ya tiene React, Vite, TypeScript, CRUD, rutas, 78 pruebas aprobadas e informe de cobertura. Estas ramas son **espacios de trabajo**, no evidencia de contribuciones anteriores de Ritwornz. Todas contienen la misma versión funcional inicial.
+La base es la rama `ep2/react-vite-typescript`, commit `9ac6f8e`. El proyecto ya tiene React, Vite, TypeScript, CRUD, rutas, 78 pruebas aprobadas e informe de cobertura. La rama **`ritwornz/proyecto-completo`** contiene todo el proyecto React y TypeScript junto con esta guía. Es un espacio de trabajo y no una evidencia de contribuciones anteriores de Ritwornz. No se ha quitado ningún archivo del proyecto base.
 
 Conservar el historial de autores. Solo hacer commits cuando exista un cambio o una comprobación documentada realmente realizada. No copiar archivos idénticos para simular avances.
 
 ## Preparación
 
 1. Clonar `https://github.com/Nicricht/Edubio360.git`.
-2. Abrir una de las ramas de trabajo indicadas más abajo.
+2. Abrir la única rama de trabajo: `git switch --track origin/ritwornz/proyecto-completo`.
 3. En la carpeta `ep2`, ejecutar `npm ci`, `npm run test:run` y `npm run build`.
 4. Revisar los archivos asignados, realizar correcciones o agregar pruebas relevantes.
 5. Registrar los cambios propios y abrir un Pull Request hacia `ep2/react-vite-typescript`.
 6. No modificar `main` ni forzar cambios en la rama final. Si cambia la cantidad de pruebas o la cobertura, actualizar también el informe.
 
-## Ramas y actividades
+## Áreas de trabajo contenidas en esta rama
 
-### 1. `ritwornz/paginas-publicas`
+### 1. Páginas públicas
 
 **Archivos:** `ep2/src/pages/Inicio.tsx`, `Nosotros.tsx`, `Novedades.tsx`, `NovedadDetalle.tsx`, `Contacto.tsx`.
 
@@ -25,7 +25,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** descripción de las diferencias encontradas y capturas antes/después de las correcciones, cuando existan.
 
-### 2. `ritwornz/componentes`
+### 2. Componentes
 
 **Archivos:** `ep2/src/components/atoms/`, `molecules/` y `organisms/`.
 
@@ -33,7 +33,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** componentes revisados, motivo de cada ajuste y resultados de pruebas relacionadas.
 
-### 3. `ritwornz/catalogo`
+### 3. Catálogo
 
 **Archivos:** `ep2/src/data/seed.ts`, `ep2/src/utils/filters.ts`, `ep2/src/pages/Catalogo.tsx`, `DetalleOferta.tsx`, `ep2/src/components/molecules/OfertaCard.tsx`.
 
@@ -41,7 +41,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** casos revisados, problemas encontrados y pruebas ejecutadas.
 
-### 4. `ritwornz/responsividad`
+### 4. Responsividad
 
 **Archivos:** `ep2/src/components/organisms/SiteHeader.tsx`, `ep2/src/pages/Registro.tsx`, `Catalogo.tsx`, `AdminOfertaForm.tsx` y estilos relacionados.
 
@@ -49,7 +49,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** capturas reales por ancho de pantalla y resultados después de los cambios.
 
-### 5. `ritwornz/pruebas`
+### 5. Pruebas
 
 **Archivos:** `ep2/src/pages/*.test.tsx`, `ep2/src/components/**/*.test.tsx` y pruebas nuevas cuando sean necesarias.
 
@@ -57,7 +57,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** reporte de Vitest, pruebas aprobadas y explicación de qué error detectan.
 
-### 6. `ritwornz/documentacion`
+### 6. Documentación
 
 **Archivos:** `ep2/docs/TESTING_EP2.md`, `ERS_EP2.md` y evidencias del proyecto.
 
@@ -65,7 +65,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** fuentes de capturas, resultados reproducibles y cambios documentales comprobables.
 
-### 7. `ritwornz/accesibilidad`
+### 7. Accesibilidad
 
 **Archivos:** formularios públicos, `SiteHeader.tsx`, `OfertaCard.tsx`, `Contacto.tsx` y `Registro.tsx`.
 
@@ -73,7 +73,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 **Evidencia:** lista de comprobaciones y comportamiento corregido.
 
-### 8. `ritwornz/rutas-y-estados`
+### 8. Rutas y estados
 
 **Archivos:** `ep2/src/App.tsx`, `DetalleOferta.tsx`, `NoEncontrada.tsx`, `Login.tsx`, `Perfil.tsx` y vistas protegidas.
 
@@ -83,7 +83,7 @@ Conservar el historial de autores. Solo hacer commits cuando exista un cambio o 
 
 ## Integración
 
-Trabajar una rama por tema, sin repetir cambios idénticos en varias ramas. Abrir un Pull Request por conjunto de cambios reales. Antes de integrar, ejecutar las pruebas y la compilación. Nicolás revisa la integración a EP2 y ambos deben comprender el proyecto completo para la presentación individual.
+Trabajar en las ocho áreas desde `ritwornz/proyecto-completo`, sin repetir cambios artificialmente. Abrir un Pull Request por conjunto de cambios reales. Antes de integrar, ejecutar las pruebas y la compilación. Nicolás revisa la integración a EP2 y ambos deben comprender el proyecto completo para la presentación individual.
 
 ## Entrega y atribución
 
